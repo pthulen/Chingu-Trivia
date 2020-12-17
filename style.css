@@ -26,20 +26,26 @@ button:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
+  .header {
+    border:0.1em solid #000;
+  }
+
   .next {
       text-align: center;
   }
 
   #next {
-    display: block;
+    display: inline;
   }
 
   /* Add some padding inside the card container */
   .container {
     padding: 2px 16px;
     text-align: center;
+    justify-content: center;
   }
   .choice {
-    display: line;
+    display: inline;
   }
+  
   
