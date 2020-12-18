@@ -147,7 +147,8 @@ const quizQuestions = [
   const result = document.querySelector(".result");
   
   nextButton.style.display = "none";
-  
+
+  // loads text from first question at load
   numberText.textContent = currentQuestion.id;
   questionText.textContent = currentQuestion.question;
   answerText1.textContent = currentQuestion.choices["a"];
@@ -163,7 +164,7 @@ const quizQuestions = [
     position++;
     if (position > 9) {
       let finalScore = (score / 10) * 100;
-      result.textContent = `You scored a ${finalScore}%`;
+      result.textContent = `You scored a ${finalScore}%! Thanks for playing!`;
       position = -1;
       questionText.textContent = "";
       answerButtons.forEach((el) => (el.style.display = "none"));
@@ -180,8 +181,8 @@ const quizQuestions = [
     }
   }
   
-  // answer checks
-  function answer1Check(e) {
+  // answer checks for each answer button
+  function answer1Check() {
     nextButton.style.display = "inline";
     answerButtons.forEach((el) => (el.style.display = "none"));
     if (currentQuestion.answer == "a") {
@@ -191,7 +192,7 @@ const quizQuestions = [
       result.textContent = "Wrong!!";
     }
   }
-  function answer2Check(e) {
+  function answer2Check() {
     nextButton.style.display = "inline";
     answerButtons.forEach((el) => (el.style.display = "none"));
     if (currentQuestion.answer == "b") {
@@ -202,7 +203,7 @@ const quizQuestions = [
     }
   }
   
-  function answer3Check(e) {
+  function answer3Check() {
     nextButton.style.display = "inline";
     answerButtons.forEach((el) => (el.style.display = "none"));
     if (currentQuestion.answer == "c") {
