@@ -132,7 +132,7 @@ const quizQuestions = [
   }
 ];
 
-
+  //inital setup on page load
   let position = 0;
   let score = 0;
   let currentQuestion = quizQuestions[position];
@@ -180,57 +180,32 @@ const quizQuestions = [
       nextButton.style.display = "none";
     }
   }
+
+  //find key by value. Needed to check correct answer
+  function getKeyByValue(obj, value) {
+    return Object.keys(obj).find(key => obj[key] === value);
+  }
   
   // answer checks for each answer button
-  function answer1Check() {
+  function answerCheckAll(e){
     nextButton.style.display = "inline";
     answerButtons.forEach((el) => (el.style.display = "none"));
-    if (currentQuestion.answer == "a") {
+    const currentKey = getKeyByValue(currentQuestion.choices,e.toElement.innerText);
+
+    if (currentKey == currentQuestion.answer) {
       score++;
       result.textContent = "Correct!!";
     } else {
       result.textContent = "Wrong!!";
     }
   }
-  function answer2Check() {
-    nextButton.style.display = "inline";
-    answerButtons.forEach((el) => (el.style.display = "none"));
-    if (currentQuestion.answer == "b") {
-      score++;
-      result.textContent = "Correct!!";
-    } else {
-      result.textContent = "Wrong!!";
-    }
-  }
-  
-  function answer3Check() {
-    nextButton.style.display = "inline";
-    answerButtons.forEach((el) => (el.style.display = "none"));
-    if (currentQuestion.answer == "c") {
-      score++;
-      result.textContent = "Correct!!";
-    } else {
-      result.textContent = "Wrong!!";
-    }
-  }
-  
-  function answer4Check() {
-    nextButton.style.display = "inline";
-    answerButtons.forEach((el) => (el.style.display = "none"));
-    if (currentQuestion.answer == "d") {
-      score++;
-      result.textContent = "Correct!!";
-    } else {
-      result.textContent = "Wrong!!";
-    }
-  }
-  
+
   //event listener - next button
   document.getElementById("next").addEventListener("click", nextQuestion);
   
   // answer choices event listeners
-  document.getElementById("choice1").addEventListener("click", answer1Check);
-  document.getElementById("choice2").addEventListener("click", answer2Check);
-  document.getElementById("choice3").addEventListener("click", answer3Check);
-  document.getElementById("choice4").addEventListener("click", answer4Check);
+  document.getElementById("choice1").addEventListener("click", answerCheckAll);
+  document.getElementById("choice2").addEventListener("click", answerCheckAll);
+  document.getElementById("choice3").addEventListener("click", answerCheckAll);
+  document.getElementById("choice4").addEventListener("click", answerCheckAll);
   
